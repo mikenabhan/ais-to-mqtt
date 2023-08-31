@@ -45,7 +45,7 @@ async def connect_ais_stream():
             # Publish AIS message to MQTT broker
             print(ais_info)
             mqtt_topic = f"{mqtt_base_topic}/{ship_id}"
-            mqtt_client.publish(mqtt_topic, payload=str(ais_info), qos=1)
+            mqtt_client.publish(mqtt_topic, payload=json.dumps(ais_info), qos=1)
 
 if __name__ == "__main__":
     asyncio.run(connect_ais_stream())
